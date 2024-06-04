@@ -48,6 +48,11 @@ dependencies {
     implementation(libs.android.lifecycleViewModelKtx)
     implementation(libs.android.paging)
 
+    implementation(libs.backend.okHttp)
+    implementation(libs.backend.okHttpInterceptor)
+    implementation(libs.backend.retrofit)
+    implementation(libs.backend.moshi)
+
     implementation(libs.google.material)
 
     implementation(project(":navigation"))
