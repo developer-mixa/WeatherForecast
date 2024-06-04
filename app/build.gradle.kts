@@ -33,6 +33,9 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures{
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -46,6 +49,8 @@ dependencies {
     implementation(libs.android.paging)
 
     implementation(libs.google.material)
+
+    implementation(project(":navigation"))
 
     testImplementation(libs.test.junit)
 }

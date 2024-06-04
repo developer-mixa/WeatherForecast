@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 interface Navigator {
 
 
-    fun launch(screen: BaseScreen, addToBackStack: Boolean = false, aboveAll: Boolean = false)
+    fun launch(screen: BaseScreen, addToBackStack: Boolean = false)
 
     fun goBack(result: Any? = null)
 

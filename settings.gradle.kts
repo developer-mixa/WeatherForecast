@@ -26,6 +26,7 @@ dependencyResolutionManagement {
             library("google.material", "com.google.android.material:material:1.12.0")
 
             library("test.junit", "junit:junit:4.13.2")
+
         }
     }
 }
