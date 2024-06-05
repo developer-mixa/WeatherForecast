@@ -1,11 +1,9 @@
 package com.example.weatherforecast.presentation.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.core.view.isVisible
-import androidx.lifecycle.lifecycleScope
-import androidx.paging.LoadState
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.navigation.BaseScreen
 import com.example.weatherforecast.R
@@ -15,8 +13,10 @@ import com.example.weatherforecast.presentation.models.EmptyContainer
 import com.example.weatherforecast.presentation.models.ErrorContainer
 import com.example.weatherforecast.presentation.models.PendingContainer
 import com.example.weatherforecast.presentation.models.SuccessContainer
+import com.example.weatherforecast.presentation.sticky.RecyclerSectionItemDecoration
 import com.example.weatherforecast.utils.collectFlow
 import com.example.weatherforecast.utils.viewBinding
+
 
 class CitiesFragment : Fragment(R.layout.fragment_cities) {
 
@@ -41,8 +41,14 @@ class CitiesFragment : Fragment(R.layout.fragment_cities) {
         val footerAdapter = MenuLoadStateAdapter(tryAgainAction)
         val adapterWithLoadState = adapter.withLoadStateFooter(footerAdapter)
 
+        val sectionItemDecoration = RecyclerSectionItemDecoration(
+            resources.getDimensionPixelSize(R.dimen.recycler_section_header_height),
+            adapter.getSessionCallback())
+
+
         recyclerCities.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         recyclerCities.adapter = adapterWithLoadState
+        recyclerCities.addItemDecoration(sectionItemDecoration)
     }
 
     private fun renderCities() = collectFlow {

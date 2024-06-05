@@ -36,8 +36,8 @@ class DefaultCitiesRepository @Inject constructor(
         pageSize: Int,
     ): List<City> {
         val cities: List<City> = citiesRetrofitSource.getCities()
-
-        Log.d("MyLog", "happen")
+            .sortedBy { it.name }
+            .filter { it.name.isNotBlank() } // i think city can't be empty
 
         val offset = pageIndex * pageSize
 

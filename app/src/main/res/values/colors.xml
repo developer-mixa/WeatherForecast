@@ -2,4 +2,6 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="tap_city_color">#D5D5D5</color>
+    <color name="default_city_color">#FEF7FF</color>
 </resources>

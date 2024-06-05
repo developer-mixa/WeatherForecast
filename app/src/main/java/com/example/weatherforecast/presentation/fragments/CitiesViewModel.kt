@@ -33,7 +33,7 @@ class CitiesViewModel @Inject constructor(
     private fun getCities() = viewModelScope.launch{
         try {
             _cities.value = PendingContainer()
-            delay(1000)
+            delay(200)
             citiesRepository.getCities().collect{
                 _cities.value = SuccessContainer(it)
             }
