@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
 }
 
 android {
@@ -53,7 +54,10 @@ dependencies {
     implementation(libs.backend.retrofit)
     implementation(libs.backend.moshi)
 
+    implementation(libs.google.dagger)
     implementation(libs.google.material)
+
+    kapt(libs.google.daggerAnnotationProcessor)
 
     implementation(project(":navigation"))
 

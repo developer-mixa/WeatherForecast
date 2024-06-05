@@ -14,6 +14,7 @@ dependencyResolutionManagement {
 
     val okHttpVersion = "4.9.3"
     val retrofitVersion = "2.9.0"
+    val daggerVersion = "2.46"
 
     versionCatalogs {
         create("libs") {
@@ -33,6 +34,8 @@ dependencyResolutionManagement {
             library("backend.moshi", "com.squareup.retrofit2:converter-moshi:$retrofitVersion")
 
             library("google.material", "com.google.android.material:material:1.12.0")
+            library("google.dagger", "com.google.dagger:dagger:$daggerVersion")
+            library("google.daggerAnnotationProcessor", "com.google.dagger:dagger-compiler:$daggerVersion")
 
             library("test.junit", "junit:junit:4.13.2")
 
