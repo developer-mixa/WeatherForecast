@@ -7,5 +7,4 @@ import retrofit2.http.GET
 interface CitiesApi {
     @GET(CitiesApiConfig.GET_CITIES_URL)
     suspend fun getCities() : List<CitiesResponseBody>
-
 }

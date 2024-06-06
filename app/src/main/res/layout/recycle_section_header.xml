@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    xmlns:tool="http://schemas.android.com/tools">
 
     <TextView
+        style="@style/EllipsisSingleLineRobotoMedium"
         android:id="@+id/textIdCity"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="16dp"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:ellipsize="end"
-        android:fontFamily="@font/roboto_medium"
+        android:layout_width="@dimen/text_id_city_width"
+        android:layout_height="@dimen/text_id_city_height"
+        android:layout_marginStart="@dimen/text_id_city_margin_start"
+        android:layout_marginTop="@dimen/text_id_city_margin_top"
         android:gravity="center"
-        android:maxLines="1"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        tool:text="M"
+        />
 
 </FrameLayout>

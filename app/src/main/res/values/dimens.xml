@@ -1,5 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- city item -->
     <dimen name="city_item_height">40dp</dimen>
+    <dimen name="city_item_margin_start">16dp</dimen>
+    <dimen name="city_item_margin_top">8dp</dimen>
+    <dimen name="city_item_margin_bottom">8dp</dimen>
+
+    <!-- recycler section header -->
     <dimen name="recycler_section_header_height">0dp</dimen>
+
+    <!-- barrier -->
+    <dimen name="barrier_width">40dp</dimen>
+    <dimen name="barrier_height">40dp</dimen>
+    <dimen name="barrier_margin_end">8dp</dimen>
+
+    <!-- text city name -->
+    <dimen name="text_city_name_margin_end">16dp</dimen>
+    <dimen name="text_city_name_padding_start">16dp</dimen>
+    <dimen name="text_city_name_padding_end">16dp</dimen>
+    <dimen name="text_city_name_size">16sp</dimen>
+
+    <!-- load state -->
+    <dimen name="load_state_height">80dp</dimen>
+    <dimen name="load_state_padding_start">8dp</dimen>
+    <dimen name="load_state_padding_end">8dp</dimen>
+
+    <!-- try again button -->
+    <dimen name="try_again_button_margin_top">2dp</dimen>
+
+    <!-- progress_bar -->
+    <dimen name="progress_bar_width">48dp</dimen>
+    <dimen name="progress_bar_height">48dp</dimen>
+
+    <!-- error container -->
+    <dimen name="error_container_margin_start">16dp</dimen>
+    <dimen name="error_container_margin_end">16dp</dimen>
+
+    <!-- text error -->
+    <dimen name="text_error_margin_bottom">42dp</dimen>
+
+    <!-- text id city -->
+    <dimen name="text_id_city_margin_top">8dp</dimen>
+    <dimen name="text_id_city_margin_start">16dp</dimen>
+    <dimen name="text_id_city_width">40dp</dimen>
+    <dimen name="text_id_city_height">40dp</dimen>
+
 </resources>

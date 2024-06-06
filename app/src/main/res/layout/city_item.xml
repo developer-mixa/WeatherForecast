@@ -2,15 +2,16 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="56dp">
+    android:layout_height="56dp"
+    xmlns:tool="http://schemas.android.com/tools">
 
     <LinearLayout
         android:id="@+id/cityItem"
         android:layout_width="match_parent"
         android:layout_height="@dimen/city_item_height"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginStart="@dimen/city_item_margin_start"
+        android:layout_marginTop="@dimen/city_item_margin_top"
+        android:layout_marginBottom="@dimen/city_item_margin_bottom"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -20,9 +21,9 @@
 
         <FrameLayout
             android:id="@+id/barrier"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginEnd="8dp"
+            android:layout_width="@dimen/barrier_width"
+            android:layout_height="@dimen/barrier_height"
+            android:layout_marginEnd="@dimen/barrier_margin_end"
             android:gravity="center"
             />
 
@@ -33,19 +34,20 @@
             android:background="@drawable/tap_city_background">
 
             <TextView
+                style="@style/EllipsisSingleLineRobotoMedium"
                 android:id="@+id/textCityName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginEnd="16dp"
+                android:layout_marginEnd="@dimen/text_city_name_margin_end"
                 android:background="@drawable/tap_city_background"
-                android:ellipsize="end"
                 android:fontFamily="@font/roboto_regular"
-                android:maxLines="1"
-                android:text="Москва"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:textSize="16sp" />
+                android:paddingStart="@dimen/text_city_name_padding_start"
+                android:paddingEnd="@dimen/text_city_name_padding_end"
+                android:textSize="@dimen/text_city_name_size"
+                tool:text="Москва"
+                />
+
         </FrameLayout>
 
     </LinearLayout>
