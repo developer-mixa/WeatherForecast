@@ -1,4 +1,4 @@
-package com.example.orderdeliver.presentation.navigation
+package com.example.weatherforecast.presentation.navigation
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels

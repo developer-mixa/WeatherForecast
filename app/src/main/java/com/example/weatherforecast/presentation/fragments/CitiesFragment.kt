@@ -4,13 +4,11 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.paging.PagingData
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.navigation.BaseScreen
 import com.example.weatherforecast.R
 import com.example.weatherforecast.databinding.FragmentCitiesBinding
 import com.example.weatherforecast.di.components.DaggerAppComponent
-import com.example.weatherforecast.domain.entities.City
 import com.example.weatherforecast.presentation.models.ErrorContainer
 import com.example.weatherforecast.presentation.models.PendingContainer
 import com.example.weatherforecast.presentation.models.SuccessContainer

@@ -1,4 +1,4 @@
-package com.example.orderdeliver.presentation.navigation
+package com.example.weatherforecast.presentation.navigation
 
 import android.app.Application
 import android.widget.Toast
@@ -7,10 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import com.example.navigation.BaseScreen
-import com.example.navigation.Event
 import com.example.navigation.MainActivityActions
 import com.example.navigation.Navigator
 import com.example.weatherforecast.presentation.activities.MainActivity
@@ -24,18 +21,12 @@ class MainNavigator(
 
     val whenActivityActive = MainActivityActions()
 
-    private val _result = MutableLiveData<Event<Any>>()
-    val result: LiveData<Event<Any>> = _result
-
     override fun launch(screen: BaseScreen, addToBackStack: Boolean) = whenActivityActive{
         launchFragment(it as MainActivity, screen, addToBackStack, R.id.fragmentMainContainer)
     }
 
 
     override fun goBack(result: Any?) = whenActivityActive{
-        if (result != null){
-            _result.value = Event(result)
-        }
         it.onBackPressedDispatcher.onBackPressed()
     }
 

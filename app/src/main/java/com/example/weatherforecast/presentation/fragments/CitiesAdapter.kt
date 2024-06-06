@@ -1,6 +1,5 @@
 package com.example.weatherforecast.presentation.fragments
 
-import android.media.MediaSession2.SessionCallback
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,8 +10,6 @@ import com.example.weatherforecast.R
 import com.example.weatherforecast.databinding.CityItemBinding
 import com.example.weatherforecast.domain.entities.City
 import com.example.weatherforecast.presentation.sticky.RecyclerSectionItemDecoration
-import kotlin.math.max
-import kotlin.math.min
 
 class CitiesAdapter : PagingDataAdapter<City, CitiesAdapter.ViewHolder>(CitiesDiffCallback()) {
 

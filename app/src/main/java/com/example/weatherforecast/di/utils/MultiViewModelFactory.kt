@@ -11,6 +11,4 @@ class MultiViewModelFactory @Inject constructor(
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return factories.getValue(modelClass as Class<ViewModel>).get() as T
     }
-
-    val viewModelsClasses get() = factories.keys
 }

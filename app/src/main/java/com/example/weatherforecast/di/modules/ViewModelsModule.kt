@@ -11,5 +11,5 @@ import dagger.multibindings.IntoMap
 interface ViewModelsModule {
     @Binds
     @[IntoMap ViewModelKey(CitiesViewModel::class)]
-    fun provideMainViewModule(mainViewModel: CitiesViewModel) : ViewModel
+    fun provideCitiesViewModule(citiesViewModel: CitiesViewModel) : ViewModel
 }

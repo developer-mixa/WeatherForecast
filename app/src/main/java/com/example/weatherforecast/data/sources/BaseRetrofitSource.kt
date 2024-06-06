@@ -9,9 +9,7 @@ import com.squareup.moshi.Moshi
 import retrofit2.HttpException
 import java.io.IOException
 
-open class BaseRetrofitSource(
-    private val moshi: Moshi
-) {
+open class BaseRetrofitSource(moshi: Moshi) {
 
     private val errorAdapter = moshi.adapter(ErrorResponseBody::class.java)
 
@@ -36,7 +34,7 @@ open class BaseRetrofitSource(
             val errorBody: ErrorResponseBody = errorAdapter.fromJson(
                 e.response()!!.errorBody()!!.string()
             )!!
-            BackendException(e.code(), errorBody.error)
+            BackendException(errorBody.error)
         } catch (e: Exception) {
             throw ParseJsonException(e)
         }
