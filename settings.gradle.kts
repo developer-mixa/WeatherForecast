@@ -45,4 +45,3 @@ dependencyResolutionManagement {
 
 rootProject.name = "WeatherForecast"
 include(":app")
-include(":navigation")

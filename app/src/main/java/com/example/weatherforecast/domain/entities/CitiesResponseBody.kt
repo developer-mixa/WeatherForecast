@@ -5,4 +5,8 @@ data class CitiesResponseBody(
     val city: String,
     val latitude: Float,
     val longitude: Float
-)
+){
+    fun toCity(): City {
+        return City(id, city, latitude, longitude)
+    }
+}

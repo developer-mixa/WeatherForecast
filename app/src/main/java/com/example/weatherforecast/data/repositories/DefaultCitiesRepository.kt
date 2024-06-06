@@ -6,7 +6,7 @@ import androidx.paging.PagingData
 import com.example.weatherforecast.data.sources.CitiesPageLoader
 import com.example.weatherforecast.data.sources.CitiesPagingSource
 import com.example.weatherforecast.data.sources.CitiesRetrofitSource
-import com.example.weatherforecast.domain.CitiesRepository
+import com.example.weatherforecast.domain.repositories.CitiesRepository
 import com.example.weatherforecast.domain.entities.City
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject

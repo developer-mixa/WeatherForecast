@@ -1,9 +1,10 @@
-package com.example.weatherforecast.presentation.fragments
+package com.example.weatherforecast.presentation.fragments.cities
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
-import com.example.weatherforecast.domain.CitiesRepository
+import androidx.paging.cachedIn
+import com.example.weatherforecast.domain.repositories.CitiesRepository
 import com.example.weatherforecast.domain.entities.City
 import com.example.weatherforecast.presentation.models.Container
 import com.example.weatherforecast.presentation.models.ErrorContainer
@@ -32,7 +33,7 @@ class CitiesViewModel @Inject constructor(
         try {
             _cities.value = PendingContainer()
             delay(1000)
-            citiesRepository.getCities().collect{
+            citiesRepository.getCities().cachedIn(viewModelScope).collect{
                 _cities.value = SuccessContainer(it)
             }
         }catch (e: Exception){

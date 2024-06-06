@@ -1,4 +1,4 @@
-package com.example.weatherforecast.domain
+package com.example.weatherforecast.domain.source
 
 import com.example.weatherforecast.domain.entities.City
 

@@ -1,4 +1,4 @@
-package com.example.weatherforecast.domain
+package com.example.weatherforecast.domain.repositories
 
 import androidx.paging.PagingData
 import com.example.weatherforecast.domain.entities.City

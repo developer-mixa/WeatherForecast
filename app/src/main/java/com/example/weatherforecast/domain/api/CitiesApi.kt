@@ -1,4 +1,4 @@
-package com.example.weatherforecast.domain
+package com.example.weatherforecast.domain.api
 
 import com.example.weatherforecast.config.CitiesApiConfig
 import com.example.weatherforecast.domain.entities.CitiesResponseBody

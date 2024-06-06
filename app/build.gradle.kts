@@ -4,6 +4,11 @@ plugins {
     id("kotlin-kapt")
 }
 
+fun getLocalPropertyKey(key: String): String? {
+    return com.android.build.gradle.internal.cxx.configure
+        .gradleLocalProperties(rootDir).getProperty(key) ?: ""
+}
+
 android {
     namespace = "com.example.weatherforecast"
     compileSdk = 34
@@ -16,6 +21,10 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        val weather_api_key = getLocalPropertyKey("weather_api_key")
+
+        buildConfigField("String", "WEATHER_API_KEY", "\"$weather_api_key\"")
     }
 
     buildTypes {
@@ -36,6 +45,7 @@ android {
     }
     buildFeatures{
         viewBinding = true
+        buildConfig = true
     }
 }
 
@@ -58,8 +68,6 @@ dependencies {
     implementation(libs.google.material)
 
     kapt(libs.google.daggerAnnotationProcessor)
-
-    implementation(project(":navigation"))
 
     testImplementation(libs.test.junit)
 }

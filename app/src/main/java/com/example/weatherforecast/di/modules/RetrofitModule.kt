@@ -1,8 +1,9 @@
 package com.example.weatherforecast.di.modules
 
 import com.example.weatherforecast.config.CitiesApiConfig
-import com.example.weatherforecast.data.sources.CitiesRetrofitSource
+import com.example.weatherforecast.config.WeatherApiConfig
 import com.example.weatherforecast.data.sources.RetrofitConfig
+import com.example.weatherforecast.di.utils.WeatherRetrofit
 import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
@@ -14,20 +15,18 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Singleton
 
 @Module
-class CitiesRetrofitSourceModule {
-
+class RetrofitModule {
     @Provides
     @Singleton
-    fun provideRetrofitSource(retrofitConfig: RetrofitConfig) : CitiesRetrofitSource{
-        return CitiesRetrofitSource(retrofitConfig)
+    fun provideCitiesRetrofitConfig(retrofit: Retrofit, moshi: Moshi) : RetrofitConfig {
+        return createRetrofitConfig(retrofit, moshi)
     }
 
     @Provides
     @Singleton
-    fun provideRetrofitConfig(retrofit: Retrofit, moshi: Moshi) : RetrofitConfig{
-        return RetrofitConfig(
-            retrofit, moshi
-        )
+    @WeatherRetrofit
+    fun provideWeatherRetrofitConfig(@WeatherRetrofit retrofit: Retrofit, moshi: Moshi) : RetrofitConfig {
+        return createRetrofitConfig(retrofit, moshi)
     }
 
     @Provides
@@ -46,16 +45,33 @@ class CitiesRetrofitSourceModule {
 
     @Provides
     @Singleton
-    fun provideRetrofit(client: OkHttpClient, moshi: Moshi): Retrofit {
+    fun provideCitiesRetrofit(client: OkHttpClient, moshi: Moshi): Retrofit {
+        return createRetrofit(CitiesApiConfig.BASE_URL, client, moshi)
+    }
+
+    @Provides
+    @Singleton
+    @WeatherRetrofit
+    fun provideWeatherRetrofit(client: OkHttpClient, moshi: Moshi): Retrofit {
+        return createRetrofit(WeatherApiConfig.BASE_URL, client, moshi)
+    }
+
+    private fun createRetrofitConfig(retrofit: Retrofit, moshi: Moshi) : RetrofitConfig{
+        return RetrofitConfig(
+            retrofit, moshi
+        )
+    }
+
+    private fun createRetrofit(url: String, client: OkHttpClient, moshi: Moshi): Retrofit{
         return Retrofit.Builder()
-            .baseUrl(CitiesApiConfig.BASE_URL)
+            .baseUrl(url)
             .addConverterFactory(MoshiConverterFactory.create(moshi))
             .client(client)
             .build()
     }
+
     private fun createLoggingInterceptor(): Interceptor {
         return HttpLoggingInterceptor()
             .setLevel(HttpLoggingInterceptor.Level.BODY)
     }
-
 }

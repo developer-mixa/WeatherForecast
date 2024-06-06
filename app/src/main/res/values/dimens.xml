@@ -45,4 +45,9 @@
     <dimen name="text_id_city_width">40dp</dimen>
     <dimen name="text_id_city_height">40dp</dimen>
 
+    <!-- weather button update -->
+    <dimen name="weather_button_update_margin_start">16dp</dimen>
+    <dimen name="weather_button_update_margin_end">16dp</dimen>
+    <dimen name="weather_button_update_margin_bottom">36dp</dimen>
+
 </resources>

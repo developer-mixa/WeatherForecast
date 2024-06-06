@@ -1,4 +1,4 @@
-package com.example.weatherforecast.presentation.fragments
+package com.example.weatherforecast.presentation.fragments.cities
 
 import android.view.LayoutInflater
 import android.view.View
@@ -11,12 +11,14 @@ import com.example.weatherforecast.databinding.CityItemBinding
 import com.example.weatherforecast.domain.entities.City
 import com.example.weatherforecast.presentation.sticky.RecyclerSectionItemDecoration
 
-class CitiesAdapter : PagingDataAdapter<City, CitiesAdapter.ViewHolder>(CitiesDiffCallback()) {
+class CitiesAdapter(
+    private val onCityTap: OnCityTap
+) : PagingDataAdapter<City, CitiesAdapter.ViewHolder>(CitiesDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val view = inflater.inflate(R.layout.city_item, parent, false)
-        return ViewHolder(view)
+        return ViewHolder(view, onCityTap)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -48,12 +50,18 @@ class CitiesAdapter : PagingDataAdapter<City, CitiesAdapter.ViewHolder>(CitiesDi
         }
     }
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    class ViewHolder(view: View, private val onCityTap: OnCityTap) : RecyclerView.ViewHolder(view) {
         private val binding = CityItemBinding.bind(view)
-        fun bind(item: City) = with(binding){
-            textCityName.text = item.name
-            tapperCityItem.setOnClickListener {  }
+        fun bind(city: City) = with(binding){
+            textCityName.text = city.name
+            tapperCityItem.setOnClickListener {
+                onCityTap.tap(city)
+            }
         }
+    }
+
+    interface OnCityTap {
+        fun tap(city: City)
     }
 
 }
