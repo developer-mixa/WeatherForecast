@@ -10,6 +10,4 @@ class ErrorContainer<T>(
     val error: Throwable
 ) : Container<T>()
 
-class EmptyContainer<T> : Container<T>()
-
 class PendingContainer<T> : Container<T>()

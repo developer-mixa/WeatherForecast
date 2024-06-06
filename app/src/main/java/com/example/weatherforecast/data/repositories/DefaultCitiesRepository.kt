@@ -10,6 +10,7 @@ import com.example.weatherforecast.data.sources.CitiesRetrofitSource
 import com.example.weatherforecast.domain.CitiesRepository
 import com.example.weatherforecast.domain.entities.City
 import kotlinx.coroutines.flow.Flow
+import java.lang.Exception
 import javax.inject.Inject
 import javax.inject.Singleton
 import kotlin.math.min

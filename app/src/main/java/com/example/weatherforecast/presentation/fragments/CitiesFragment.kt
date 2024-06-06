@@ -4,12 +4,13 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.paging.PagingData
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.navigation.BaseScreen
 import com.example.weatherforecast.R
 import com.example.weatherforecast.databinding.FragmentCitiesBinding
 import com.example.weatherforecast.di.components.DaggerAppComponent
-import com.example.weatherforecast.presentation.models.EmptyContainer
+import com.example.weatherforecast.domain.entities.City
 import com.example.weatherforecast.presentation.models.ErrorContainer
 import com.example.weatherforecast.presentation.models.PendingContainer
 import com.example.weatherforecast.presentation.models.SuccessContainer
@@ -33,6 +34,7 @@ class CitiesFragment : Fragment(R.layout.fragment_cities) {
         val factory = DaggerAppComponent.create().factory
         viewModel = factory.create(CitiesViewModel::class.java)
         setupAdapter()
+        setupOnClickListeners()
         renderCities()
     }
 
@@ -51,21 +53,24 @@ class CitiesFragment : Fragment(R.layout.fragment_cities) {
         recyclerCities.addItemDecoration(sectionItemDecoration)
     }
 
-    private fun renderCities() = collectFlow {
-        viewModel.cities.collect {
-            when(it){
-                is SuccessContainer -> {
-                    binding.progressBar.isVisible = false
-                    adapter.submitData(it.value)
-                }
-                is PendingContainer -> {
-                    binding.progressBar.isVisible = true
-                }
-                is ErrorContainer -> {}
-                is EmptyContainer -> {}
-            }
+    private fun setupOnClickListeners() = with(binding){
+        buttonRefresh.setOnClickListener {
+            viewModel.retry()
         }
     }
 
+    private fun renderCities() = collectFlow {
+        viewModel.cities.collect { container ->
+            with(binding){
+                progressBar.isVisible = container is PendingContainer
+                errorContainer.isVisible = container is ErrorContainer
 
+                if (container is SuccessContainer)
+                    adapter.submitData(container.value)
+
+                if (container is ErrorContainer)
+                    textError.text = getString(R.string.happen_mistake, container.error.message)
+            }
+        }
+    }
 }
