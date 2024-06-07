@@ -8,6 +8,8 @@ technologies and architectures used:
 - Clean Architecture
 - MVVM
 - Tests
+
+
 Instuctions to start application:
 1) Added "weather_api_key" in local.properties, this is OpenWeatherApi key
 2) Start project
