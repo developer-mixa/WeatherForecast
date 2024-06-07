@@ -1,9 +1,8 @@
 package com.example.weatherforecast.presentation.fragments.weather
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.weatherforecast.data.repositories.DefaultWeatherRepository
+import com.example.weatherforecast.domain.repositories.WeatherRepository
 import com.example.weatherforecast.presentation.models.Container
 import com.example.weatherforecast.presentation.models.ErrorContainer
 import com.example.weatherforecast.presentation.models.PendingContainer
@@ -13,10 +12,9 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-import kotlin.math.round
 
 class WeatherCityViewModel @Inject constructor(
-    private val weatherRepository: DefaultWeatherRepository
+    private val weatherRepository: WeatherRepository
 ) : ViewModel() {
 
     private val _temperature = MutableStateFlow<Container<Double>>(PendingContainer())

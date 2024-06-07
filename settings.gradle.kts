@@ -40,7 +40,7 @@ dependencyResolutionManagement {
             library("test.junit", "junit:junit:4.13.2")
             library("test.mock", "io.mockk:mockk:1.12.4")
             library("test.coroutines", "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.1")
-
+            library("test.archCore", "androidx.arch.core:core-testing:2.1.0")
         }
     }
 }

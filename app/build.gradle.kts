@@ -72,4 +72,5 @@ dependencies {
     testImplementation(libs.test.junit)
     testImplementation(libs.test.mock)
     testImplementation(libs.test.coroutines)
+    testImplementation(libs.test.archCore)
 }

@@ -1,7 +1,6 @@
 package com.example.weatherforecast.data.repositories
 
 import com.example.weatherforecast.data.sources.RetrofitConfig
-import com.example.weatherforecast.domain.api.CitiesApi
 import com.example.weatherforecast.domain.api.WeatherApi
 import com.example.weatherforecast.domain.entities.Main
 import com.example.weatherforecast.domain.entities.TemperatureResponseBody

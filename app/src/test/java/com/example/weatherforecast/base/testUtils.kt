@@ -1,4 +1,4 @@
-package com.example.weatherforecast
+package com.example.weatherforecast.base
 
 import org.junit.Assert
 

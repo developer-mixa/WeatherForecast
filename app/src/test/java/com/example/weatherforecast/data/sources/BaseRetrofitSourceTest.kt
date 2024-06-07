@@ -1,6 +1,6 @@
 package com.example.weatherforecast.data.sources
 
-import com.example.weatherforecast.catch
+import com.example.weatherforecast.base.catch
 import com.example.weatherforecast.data.ConnectionException
 import com.example.weatherforecast.data.ParseJsonException
 import io.mockk.mockk
