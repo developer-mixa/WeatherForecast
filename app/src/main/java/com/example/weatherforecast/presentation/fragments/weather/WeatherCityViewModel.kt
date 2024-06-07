@@ -1,5 +1,6 @@
 package com.example.weatherforecast.presentation.fragments.weather
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.weatherforecast.domain.repositories.WeatherRepository
@@ -11,6 +12,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import java.math.RoundingMode
 import javax.inject.Inject
 
 class WeatherCityViewModel @Inject constructor(
@@ -25,7 +27,7 @@ class WeatherCityViewModel @Inject constructor(
         delay(200)
         try {
             val temperature = weatherRepository.getTemperatureByCity(latitude.toDouble(), longitude.toDouble())
-            val roundTemperature = String.format("%.1f", temperature).toDouble()
+            val roundTemperature = temperature.toBigDecimal().setScale(1, RoundingMode.FLOOR).toDouble()
             _temperature.value = SuccessContainer(roundTemperature)
         } catch (e: Exception){
             _temperature.value = ErrorContainer(e)
