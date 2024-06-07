@@ -66,8 +66,6 @@ class WeatherCityFragment : Fragment(R.layout.fragment_weather_city) {
             }
         }
 
-
-
     }
 
     companion object {
