@@ -70,4 +70,6 @@ dependencies {
     kapt(libs.google.daggerAnnotationProcessor)
 
     testImplementation(libs.test.junit)
+    testImplementation(libs.test.mock)
+    testImplementation(libs.test.coroutines)
 }

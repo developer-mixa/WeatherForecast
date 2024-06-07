@@ -16,8 +16,6 @@ open class BaseRetrofitSource(moshi: Moshi) {
     suspend fun <T> wrapRetrofitExceptions(block: suspend () -> T): T {
         return try {
             block()
-        } catch (e: Exception) {
-            throw e
         } catch (e: JsonDataException) {
             throw ParseJsonException(e)
         } catch (e: JsonEncodingException) {
@@ -26,6 +24,8 @@ open class BaseRetrofitSource(moshi: Moshi) {
             throw createServerException(e)
         } catch (e: IOException) {
             throw ConnectionException(e)
+        } catch (e: Exception) {
+            throw e
         }
     }
 
@@ -36,6 +36,7 @@ open class BaseRetrofitSource(moshi: Moshi) {
             )!!
             BackendException(errorBody.error)
         } catch (e: Exception) {
+            println(e)
             throw ParseJsonException(e)
         }
     }

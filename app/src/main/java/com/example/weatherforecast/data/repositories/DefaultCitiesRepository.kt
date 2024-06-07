@@ -21,7 +21,7 @@ class DefaultCitiesRepository @Inject constructor(
     override fun getCities(): Flow<PagingData<City>> {
 
         val citiesPageLoader: CitiesPageLoader = {pageIndex, pageSize ->
-            getFoods(pageIndex, pageSize)
+            getCities(pageIndex, pageSize)
         }
 
         return Pager(
@@ -30,7 +30,7 @@ class DefaultCitiesRepository @Inject constructor(
         ).flow
     }
 
-    private suspend fun getFoods(
+    private suspend fun getCities(
         pageIndex: Int,
         pageSize: Int,
     ): List<City> {
@@ -41,7 +41,6 @@ class DefaultCitiesRepository @Inject constructor(
         val offset = pageIndex * pageSize
 
         val limit = min(offset + pageSize, cities.size)
-
         return cities.slice(offset until limit)
     }
 

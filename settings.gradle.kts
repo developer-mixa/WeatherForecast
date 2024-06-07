@@ -38,6 +38,8 @@ dependencyResolutionManagement {
             library("google.daggerAnnotationProcessor", "com.google.dagger:dagger-compiler:$daggerVersion")
 
             library("test.junit", "junit:junit:4.13.2")
+            library("test.mock", "io.mockk:mockk:1.12.4")
+            library("test.coroutines", "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.1")
 
         }
     }
